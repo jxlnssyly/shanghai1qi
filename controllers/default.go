@@ -25,9 +25,9 @@ func (c *MainController)Post()  {
 	o := orm.NewOrm()
 
 	// 2、执行某个操作函数, 增删改查
-	// 插入
 	var user models.User
-
+	// 插入
+/*
 	user.Name = "Liaoy"
 	user.Password = "123456"
 
@@ -40,6 +40,15 @@ func (c *MainController)Post()  {
 		return
 	}
 	beego.Info(count)
+*/
+
+	//查询
+	user.Id = 2
+	err := o.Read(&user,"Id")
+	if err != nil {
+		beego.Error("查询失败:",err)
+	}
+	beego.Info(user)
 
 	c.Data["data"] = "POST"
 	c.TplName = "test.html"
