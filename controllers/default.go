@@ -43,12 +43,41 @@ func (c *MainController)Post()  {
 */
 
 	//查询
+	/*
 	user.Id = 2
 	err := o.Read(&user,"Id")
 	if err != nil {
 		beego.Error("查询失败:",err)
 	}
 	beego.Info(user)
+*/
+
+	// 修改
+	/*
+	user.Id = 2
+	err := o.Read(&user)
+
+	if err != nil {
+		beego.Error("要更新的数据不存在",err)
+	}
+
+	user.Name = "廖延"
+	count, err := o.Update(&user)
+
+	if err != nil {
+		beego.Error("更新失败")
+	}
+	beego.Info(count)
+	*/
+
+	// 删除
+	user.Id = 3
+	count, err := o.Delete(&user)
+
+	if err != nil {
+		beego.Error("删除失败",err)
+	}
+	beego.Info(count)
 
 	c.Data["data"] = "POST"
 	c.TplName = "test.html"

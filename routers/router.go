@@ -7,6 +7,11 @@ import (
 
 func init() {
     beego.Router("/", &controllers.MainController{})
+
+    beego.Router("/register", &controllers.UserController{},"get:ShowRegister;post:HandleResister")
+	beego.Router("/login", &controllers.UserController{},"get:ShowLogin;post:HandleLogin")
+
+
     // 给请求指定自定义方法
     //beego.Router("/login",&controllers.LoginController{},"get:ShowLogin;post:PostFunc")
 	//
