@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e69e7c53-a13d-48fc-9ddc-c02fbf8e7fac" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/controllers/ArticleController.go" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/ArticleController.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/model.go" beforeDir="false" afterPath="$PROJECT_DIR$/models/model.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routers/router.go" beforeDir="false" afterPath="$PROJECT_DIR$/routers/router.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shanghai1qi" beforeDir="false" afterPath="$PROJECT_DIR$/shanghai1qi" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/img/2019-04-11-15:27:12.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/img/2019-04-11-15:27:28.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/addType.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/addType.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/index.html" afterDir="false" />
-    </list>
+    <list default="true" id="e69e7c53-a13d-48fc-9ddc-c02fbf8e7fac" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -32,8 +23,8 @@
       <file leaf-file-name="ArticleController.go" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/controllers/ArticleController.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="334">
-              <caret line="234" column="14" selection-start-line="234" selection-start-column="14" selection-end-line="234" selection-end-column="14" />
+            <state relative-caret-position="367">
+              <caret line="230" lean-forward="true" selection-start-line="230" selection-end-line="230" />
               <folding>
                 <element signature="n#!!block;n#Uploadfile#0" />
               </folding>
@@ -177,11 +168,6 @@
               <item name="shanghai1qi" type="b2602c69:ProjectViewProjectNode" />
               <item name="shanghai1qi" type="462c0819:PsiDirectoryNode" />
               <item name="static" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="shanghai1qi" type="b2602c69:ProjectViewProjectNode" />
-              <item name="shanghai1qi" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="shanghai1qi" type="b2602c69:ProjectViewProjectNode" />
@@ -553,8 +539,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/controllers/ArticleController.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="334">
-          <caret line="234" column="14" selection-start-line="234" selection-start-column="14" selection-end-line="234" selection-end-column="14" />
+        <state relative-caret-position="367">
+          <caret line="230" lean-forward="true" selection-start-line="230" selection-end-line="230" />
           <folding>
             <element signature="n#!!block;n#Uploadfile#0" />
           </folding>
