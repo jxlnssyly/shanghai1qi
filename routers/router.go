@@ -19,7 +19,7 @@ func init() {
 
     beego.Router("/showArticleDetail",&controllers.ArticleController{},"get:ShowArticleDetail")
 
-	beego.Router("/updateArticle",&controllers.ArticleController{},"get:ShowUpdateArticle")
+	beego.Router("/updateArticle",&controllers.ArticleController{},"get:ShowUpdateArticle;post:HandleUpdateArticle")
     // 给请求指定自定义方法
     //beego.Router("/login",&controllers.LoginController{},"get:ShowLogin;post:PostFunc")
 	//

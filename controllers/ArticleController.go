@@ -70,35 +70,7 @@ func (self *ArticleController) HandleAddArticle() {
 		return
 	}
 
-	// 处理文件上传
-	file, head, err := self.GetFile("uploadname")
-	defer file.Close()
-	if err != nil {
-		self.Data["errmsg"] = "文件上传失败"
-		self.TplName = "add.html"
-		return
-	}
 
-	// 1、文件大小
-	if head.Size > 5000000 {
-		self.Data["errmsg"] = "文件太大，请重新上传"
-		self.TplName = "add.html"
-		return
-	}
-
-	// 2、文件格式
-	//
-	ext := path.Ext(head.Filename)
-	if ext != ".jpg" && ext != ".png" && ext != ".jpeg" {
-		self.Data["errmsg"] = "文件格式错误，请重新上传"
-		self.TplName = "add.html"
-		return
-	}
-
-	// 3、防止重名
-	fileName := time.Now().Format("2006-01-02-15:04:05") + ext
-
-	self.SaveToFile("uploadname", "./static/img/"+fileName)
 
 	beego.Info(articleName, content)
 	// 3、处理数据
@@ -108,7 +80,7 @@ func (self *ArticleController) HandleAddArticle() {
 	var article models.Article
 	article.ArticelName = articleName
 	article.Acontent = content
-	article.Aimg = "/static/img/" + fileName
+	article.Aimg = Uploadfile(&self.Controller,"uploadname","add.html")
 
 	o.Insert(&article)
 
@@ -153,3 +125,88 @@ func (self *ArticleController) ShowUpdateArticle() {
 	self.Data["article"] = model
 	self.TplName = "update.html"
 }
+
+func (self *ArticleController) HandleUpdateArticle() {
+	id, err := self.GetInt("articleId")
+	aritcleName := self.GetString("articleName")
+	content := self.GetString("content")
+
+	filePath := Uploadfile(&self.Controller,"uploadname","update.html")
+
+	if err != nil || aritcleName == "" || content == "" || filePath == "" {
+		beego.Info("请求错误")
+		beego.Info("err : ",err)
+		beego.Info("aritcleName : ",aritcleName)
+		beego.Info("content : ",content)
+		beego.Info("filePath : ",filePath)
+		return
+	}
+
+	if err != nil {
+		beego.Info("传递的ID错误")
+		return
+	}
+
+	var model models.Article
+	model.Id = id
+	o := orm.NewOrm()
+	err = o.Read(&model)
+
+	if err != nil {
+		beego.Info("更新的文章不存在")
+		return
+	}
+
+	model.ArticelName = aritcleName
+	model.Acontent = content
+	if filePath != "NoImg" {
+		model.Aimg = filePath
+
+	}
+	o.Update(&model)
+
+	self.Redirect("/showArticleList",302)
+
+}
+
+
+// 封装上传文件函数
+func Uploadfile(self *beego.Controller,filePath string, tplName string) string {
+	// 处理文件上传
+	file, head, err := self.GetFile(filePath)
+
+	if head.Filename == "" {
+		return "NoImg"
+	}
+
+	if err != nil {
+		self.Data["errmsg"] = "文件上传失败"
+		self.TplName = tplName
+		return ""
+	}
+	defer file.Close()
+
+	// 1、文件大小
+	if head.Size > 5000000 {
+		self.Data["errmsg"] = "文件太大，请重新上传"
+		self.TplName = tplName
+		return ""
+	}
+
+	// 2、文件格式
+	//
+	ext := path.Ext(head.Filename)
+	if ext != ".jpg" && ext != ".png" && ext != ".jpeg" {
+		self.Data["errmsg"] = "文件格式错误，请重新上传"
+		self.TplName = tplName
+		return ""
+	}
+
+	// 3、防止重名
+	fileName := time.Now().Format("2006-01-02-15:04:05") + ext
+
+	self.SaveToFile(filePath, "./static/img/"+fileName)
+	return "/static/img/" + fileName
+}
+
+

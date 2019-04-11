@@ -33,7 +33,7 @@
             当前位置：文章管理>编辑文章
         </div>
         <div class="pannel">
-            <form name = logon >
+            <form name = logon method="post" action="/updateArticle?articleId={{.article.Id}}" enctype="multipart/form-data">
             <h3 class="review_title">编辑文章</h3>
             <div class="form_group">
                 <label>文章标题：</label>
