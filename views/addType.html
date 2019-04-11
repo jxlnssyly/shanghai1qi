@@ -5,6 +5,14 @@
     <title>编辑文章类型</title>
     <link rel="stylesheet" type="text/css" href="/static/css/reset.css">
     <link rel="stylesheet" type="text/css" href="/static/css/main.css">
+    <script type="text/javascript" src="/static/js/jquery-1.12.4.min.js"></script>
+    <script>
+        window.onload = function (ev) {
+            $(".dels").click(function () {
+                if (!confirm("确认删除")){return false}
+            })
+        }
+    </script>
 </head>
 <body>
 
@@ -40,22 +48,25 @@
                     <th width="70%">类别名称</th>
                     <th width="20%">管理操作</th>
                 </tr>
+                {{ range .types}}
+                    <tr>
+                        <td>{{.Id}}</td>
+                        <td>{{.TypeName}}</td>
+                        <td><a href="/delType?typeId={{.Id}}" class="dels">删除</a></td>
+                    </tr>
 
-                <tr>
-                    <td>1</td>
-                    <td>体育新闻</td>
-                    <td><a href="javascript:;" class="edit">删除</a></td>
-                </tr>
+                {{end}}
 
 
                 <tr>
                     <td colspan="3">
-                    <form >
+                    <form method="post" action="/addType">
                         <input type="text" class="type_txt" placeholder="添加分类" name="typeName">
                         <input type="submit" class="addtype" value="增加分类">
                     </form>
                     </td>
                 </tr>
+
             </table>
         </div>
     </div>

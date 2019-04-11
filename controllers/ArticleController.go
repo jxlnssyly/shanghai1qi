@@ -169,6 +169,77 @@ func (self *ArticleController) HandleUpdateArticle() {
 
 }
 
+func (self *ArticleController) DeleteArticle() {
+	id, err := self.GetInt("articleId")
+	if err != nil  {
+		beego.Info("请求错误")
+		return
+	}
+
+	var model models.Article
+	model.Id = id
+	o := orm.NewOrm()
+	err = o.Read(&model)
+
+	o.Delete(&model)
+	self.Redirect("/showArticleList", 302)
+}
+
+func (self *ArticleController) AddType() {
+	o := orm.NewOrm()
+	var types []models.ArticleType
+	o.QueryTable("ArticleType").All(&types)
+	self.Data["types"] = types
+	self.TplName = "addType.html"
+}
+
+func (self *ArticleController) HandleAddType() {
+	// 获取数据
+	typeName := self.GetString("typeName")
+
+
+	// 校验数据
+	if typeName == "" {
+		 beego.Info("信息不完整，请重新输入")
+		 return
+	}
+
+	o := orm.NewOrm()
+	var articleType models.ArticleType
+	articleType.TypeName = typeName
+
+	o.Insert(&articleType)
+
+	// 返回数据
+	self.Redirect("/addType", 302)
+
+}
+
+func (self *ArticleController) DelType() {
+	typeId,err := self.GetInt("typeId")
+
+	if err != nil {
+		self.Data["errmsg"] = "ID不能为空"
+		self.Redirect("/addType", 302)
+		return
+	}
+
+	tp := models.ArticleType{Id:typeId}
+
+	o := orm.NewOrm()
+	_, err = o.Delete(&tp)
+
+	if err != nil {
+		self.Data["errmsg"] = "删除失败"
+		self.Redirect("/addType", 302)
+		return
+	}
+
+	self.Redirect("/addType", 302)
+
+}
+
+
 
 // 封装上传文件函数
 func Uploadfile(self *beego.Controller,filePath string, tplName string) string {
