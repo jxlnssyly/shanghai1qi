@@ -81,7 +81,7 @@ func (self *UserController)HandleLogin()  {
 	}
 
 	// 返回页面
-	self.Ctx.WriteString("登录成功")
-
+	//self.Ctx.WriteString("登录成功")
+	self.Redirect("/showArticleList",302)
 
 }
