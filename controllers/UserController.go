@@ -49,6 +49,18 @@ func (self *UserController) HandleResister() {
 
 
 func (self *UserController) ShowLogin() {
+	userName := self.Ctx.GetCookie("userName")
+
+	if userName == "" {
+		self.Data["checked"] = ""
+	} else {
+		self.Data["checked"] = "checked"
+	}
+
+
+	self.Data["userName"] = userName
+
+
 	self.TplName = "login.html"
 }
 
@@ -82,6 +94,21 @@ func (self *UserController)HandleLogin()  {
 
 	// 返回页面
 	//self.Ctx.WriteString("登录成功")
-	self.Redirect("/showArticleList",302)
+	data := self.GetString("remember")
+	if data == "on" {
+		self.Ctx.SetCookie("userName",userName,100)
 
+	} else {
+		self.Ctx.SetCookie("userName","",-1)
+	}
+
+	self.SetSession("userName",userName)
+
+	self.Redirect("/article/showArticleList",302)
+
+}
+
+func (self *UserController) Logout() {
+	self.DelSession("userName")
+	self.Redirect("/login",302)
 }

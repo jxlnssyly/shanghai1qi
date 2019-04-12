@@ -7,6 +7,7 @@ import (
 	"github.com/astaxie/beego/orm"
 	"shanghai1qi/models"
 	"math"
+	"strconv"
 )
 
 type ArticleController struct {
@@ -16,11 +17,19 @@ type ArticleController struct {
 // 展示文章列表页
 func (self *ArticleController) ShowArticleList() {
 
+	userName := self.GetSession("userName")
+
+	if userName == nil {
+		self.Redirect("/login",302)
+		return
+	}
+
 	// 获取数据
 	o := orm.NewOrm()
 	qs := o.QueryTable(&models.Article{})
 	var articles []models.Article
 	//_, err := qs.All(&articles)
+	typeId := self.GetString("select")
 
 	//if err != nil {
 	//	beego.Info("查询数据错误")
@@ -28,32 +37,69 @@ func (self *ArticleController) ShowArticleList() {
 	//}
 
 	// 查询总记录数
-	count, _ := qs.Count()
+	var count int64
+
+	pageIndex, err := self.GetInt("pageIndex")
 
 	// 获取总页数
 	pageSize := 2
+
+	if typeId == "" {
+		count, _ = qs.Count()
+
+	} else {
+		count, _ = qs.Limit(pageSize, (pageIndex-1)*pageSize).RelatedSel("ArticleType").Filter("ArticleType__Id",typeId).Count()
+
+	}
+
 	pageCount := math.Ceil(float64(count) / float64(pageSize))
 
 	// 获取页码
-	pageIndex, err := self.GetInt("pageIndex")
 	//beego.Info(pageIndex)
 	if err != nil {
 		pageIndex = 1
 	}
 
-	qs.Limit(pageSize, (pageIndex-1)*pageSize).All(&articles)
+
+	var types []* models.ArticleType
+	o.QueryTable("ArticleType").All(&types)
+
+	// 根据选中的类型查询响应类型文章
+
+	if typeId == "" {
+		qs.Limit(pageSize, (pageIndex-1)*pageSize).RelatedSel("ArticleType").All(&articles)
+	} else {
+		qs.Limit(pageSize, (pageIndex-1)*pageSize).RelatedSel("ArticleType").Filter("ArticleType__Id",typeId).All(&articles)
+	}
+
+
+
 
 	// 传递数据
+	beego.Info(typeId)
+	typeIdInt, err := strconv.Atoi(typeId)
+	self.Data["typeId"] =  typeIdInt
+
 	self.Data["articles"] = articles
+	self.Data["types"] = types
 	self.Data["pageIndex"] = pageIndex
 	self.Data["count"] = count
 	self.Data["pageCount"] = int(pageCount)
 
+	// 指定视图布局
+	self.Layout = "layout.html"
 	self.TplName = "index.html"
 }
 
 // 展示添加文章页面
 func (self *ArticleController) ShowAddArticle() {
+
+	// 查询所有类型数据，并展示
+	o := orm.NewOrm()
+	var types []models.ArticleType
+	o.QueryTable(&models.ArticleType{}).All(&types)
+	self.Data["types"] = types
+
 	self.TplName = "add.html"
 }
 
@@ -62,6 +108,8 @@ func (self *ArticleController) HandleAddArticle() {
 	// 1、获取数据
 	articleName := self.GetString("articleName")
 	content := self.GetString("content")
+	// 给文章添加类型
+	typeId, err := self.GetInt("select")
 
 	// 2、校验数据
 	if articleName == "" || content == "" {
@@ -70,6 +118,11 @@ func (self *ArticleController) HandleAddArticle() {
 		return
 	}
 
+
+	if err != nil {
+		beego.Info("请选择文章类型")
+		return
+	}
 
 
 	beego.Info(articleName, content)
@@ -82,11 +135,16 @@ func (self *ArticleController) HandleAddArticle() {
 	article.Acontent = content
 	article.Aimg = Uploadfile(&self.Controller,"uploadname","add.html")
 
+	var tp models.ArticleType
+	tp.Id = typeId
+	o.Read(&tp)
+	article.ArticleType = &tp
+
 	o.Insert(&article)
 
 	// 4、返回页面
 
-	self.Redirect("/showArticleList", 302)
+	self.Redirect("/article/showArticleList", 302)
 }
 
 // 显示详情
@@ -104,9 +162,34 @@ func (self *ArticleController) ShowArticleDetail() {
 
 	model.Acount = model.Acount + 1
 
+	o.QueryTable("Article").RelatedSel("ArticleType").Filter("Id",id).One(&model)
 	o.Update(&model)
+
+	// 多对多插入浏览记录
+	m2m := o.QueryM2M(&model,"Users")
+
+	userName := self.GetSession("userName")
+	if userName == nil {
+		self.Redirect("/login", 302)
+		return
+	}
+
+	var user models.User
+	user.Name = userName.(string)
+	o.Read(&user,"Name")
+
+	// 插入操作
+	m2m.Add(user)
+
+
+	//o.LoadRelated(&model,"Users")
+
+	var users []models.User
+	o.QueryTable("User").Filter("Articles__Article__Id",id).All(&users)
+
 	self.Data["article"] = model
 
+	self.Layout = "layout.html"
 	self.TplName = "content.html"
 }
 
@@ -182,7 +265,7 @@ func (self *ArticleController) DeleteArticle() {
 	err = o.Read(&model)
 
 	o.Delete(&model)
-	self.Redirect("/showArticleList", 302)
+	self.Redirect("/article/showArticleList", 302)
 }
 
 func (self *ArticleController) AddType() {
@@ -220,7 +303,7 @@ func (self *ArticleController) DelType() {
 
 	if err != nil {
 		self.Data["errmsg"] = "ID不能为空"
-		self.Redirect("/addType", 302)
+		self.Redirect("/article/addType", 302)
 		return
 	}
 
@@ -231,11 +314,11 @@ func (self *ArticleController) DelType() {
 
 	if err != nil {
 		self.Data["errmsg"] = "删除失败"
-		self.Redirect("/addType", 302)
+		self.Redirect("/article/addType", 302)
 		return
 	}
 
-	self.Redirect("/addType", 302)
+	self.Redirect("/article/addType", 302)
 
 }
 
