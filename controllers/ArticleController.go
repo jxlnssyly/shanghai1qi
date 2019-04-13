@@ -8,6 +8,8 @@ import (
 	"shanghai1qi/models"
 	"math"
 	"strconv"
+	"github.com/gomodule/redigo/redis"
+	"bytes"
 )
 
 type ArticleController struct {
@@ -61,8 +63,7 @@ func (self *ArticleController) ShowArticleList() {
 	}
 
 
-	var types []* models.ArticleType
-	o.QueryTable("ArticleType").All(&types)
+
 
 	// 根据选中的类型查询响应类型文章
 
@@ -73,15 +74,42 @@ func (self *ArticleController) ShowArticleList() {
 	}
 
 
+	var types []* models.ArticleType
+
+	conn, err := redis.Dial("tcp", ":6379")
+	if err != nil {
+		beego.Info("redis连接失败")
+		return
+	}
+
+	defer conn.Close()
+
+	buffer, err := redis.Bytes(conn.Do("get","types"))
+
+	DeSerialization(&buffer,&types)
+
+	if len(types) == 0 {
+		o.QueryTable("ArticleType").All(&types)
+		var buffer bytes.Buffer
+		Serialization(&buffer,&types)
+
+		_, err = conn.Do("set","types",buffer.Bytes())
+		if err != nil {
+			beego.Info("redis数据库操作错误")
+			return
+		}
+		beego.Info("从mysql中取数据")
+	}
+
+	self.Data["types"] = types
 
 
 	// 传递数据
-	beego.Info(typeId)
+	//beego.Info(typeId)
 	typeIdInt, err := strconv.Atoi(typeId)
 	self.Data["typeId"] =  typeIdInt
 
 	self.Data["articles"] = articles
-	self.Data["types"] = types
 	self.Data["pageIndex"] = pageIndex
 	self.Data["count"] = count
 	self.Data["pageCount"] = int(pageCount)
@@ -248,7 +276,7 @@ func (self *ArticleController) HandleUpdateArticle() {
 	}
 	o.Update(&model)
 
-	self.Redirect("/showArticleList",302)
+	self.Redirect("/article/showArticleList",302)
 
 }
 
@@ -294,7 +322,7 @@ func (self *ArticleController) HandleAddType() {
 	o.Insert(&articleType)
 
 	// 返回数据
-	self.Redirect("/addType", 302)
+	self.Redirect("/article/addType", 302)
 
 }
 

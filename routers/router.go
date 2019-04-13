@@ -11,6 +11,7 @@ func init() {
 	beego.InsertFilter("/article/*",beego.BeforeExec,Filter)
 
     beego.Router("/", &controllers.ArticleController{},"get:ShowArticleList")
+	//beego.Router("/", &controllers.MainController{},"get:Get")
 
     beego.Router("/register", &controllers.UserController{},"get:ShowRegister;post:HandleResister")
 	beego.Router("/login", &controllers.UserController{},"get:ShowLogin;post:HandleLogin")
