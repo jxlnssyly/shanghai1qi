@@ -41,8 +41,9 @@ func init()  {
 	 // 1、获取连接对象
 	 orm.RegisterDataBase("default","mysql","root:123456@tcp(127.0.0.1:3306)/test?charset=utf8")
 
-	 // 2、创建表
+	 // 2、注册表
 	orm.RegisterModel(new(User), new(Article),new(ArticleType))
+	 // 生成表
 	 orm.RunSyncdb("default",false,true)
 	 // 3、操作表
 
