@@ -7,23 +7,30 @@ import (
 )
 
 func main() {
-	beego.AddFuncMap("prepage",ShowPrePage)
-	beego.AddFuncMap("nextpage",ShowNextPage)
+	beego.AddFuncMap("ShowPrePage",ShowPrePage)
+	beego.AddFuncMap("ShowNextPage",ShowNextPage)
 	beego.Run()
 }
 
-// 后台定义一个函数
-func ShowPrePage(page int) int {
-	if page <= 1 {
-		return 1
+//后台定义一个函数
+func ShowPrePage(pageIndex int)int{
+	if pageIndex == 1{
+		return pageIndex
 	}
-	return page - 1
+	return pageIndex -1
 }
 
-func ShowNextPage(page int,pageCount int) int {
-	if page >= pageCount {
-		return pageCount
+func ShowNextPage(pageIndex int,pageCount int)int{
+	if pageIndex == pageCount{
+		return pageIndex
 	}
-
-	return page + 1
+	return pageIndex + 1
 }
+
+
+/*
+作用：处理视图中简单业务逻辑
+1.创建后台函数
+2.在视图中定义函数名
+3.在beego.Run之前关联起来
+ */
