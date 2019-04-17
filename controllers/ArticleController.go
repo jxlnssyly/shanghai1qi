@@ -16,7 +16,7 @@ import (
 	"bytes"
 	"shanghai1qi/models"
 	"path"
-	"time"
+	"github.com/weilaihui/fdfs_client"
 )
 
 type ArticleController struct {
@@ -326,11 +326,28 @@ func UploadFile(this*beego.Controller,filePath string)string{
 	}
 
 	//3.防止重名
-	fileName := time.Now().Format("2006-01-02-15:04:05") + ext
+	/*fileName := time.Now().Format("2006-01-02-15:04:05") + ext
 	//存储
 	this.SaveToFile(filePath,"./static/img/"+fileName)
-	return "/static/img/"+fileName
+	return "/static/img/"+fileName*/
 
+	client, err := fdfs_client.NewFdfsClient("/etc/fdfs/client.conf")
+	if err != nil{
+		beego.Info("fdfs连接错误", err)
+		return ""
+	}
+	// 获取字节数组，大小和文件相等
+	fileBuffer := make([]byte,head.Size)
+	// 将文件写入字节流
+	file.Read(fileBuffer)
+
+	res, err := client.UploadAppenderByBuffer(fileBuffer,ext[1:])
+	if err != nil {
+		beego.Info("fdfs上传错误",err)
+		return ""
+	}
+	beego.Info("fdfs上传成功",res)
+	return res.RemoteFileId
 }
 
 

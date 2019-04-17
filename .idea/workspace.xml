@@ -2,23 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e69e7c53-a13d-48fc-9ddc-c02fbf8e7fac" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/models/dailyfresh.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/ArticleController.go" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/ArticleController.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/UserController.go" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/UserController.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/default.go" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/default.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/model.go" beforeDir="false" afterPath="$PROJECT_DIR$/models/model.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routers/router.go" beforeDir="false" afterPath="$PROJECT_DIR$/routers/router.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/shanghai1qi" beforeDir="false" afterPath="$PROJECT_DIR$/shanghai1qi" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/uploadify.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/add.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/addType.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/addType.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/content.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/content.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/layout.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/layout.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/register.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/update.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/update.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -32,24 +19,22 @@
       <file leaf-file-name="UserController.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/controllers/UserController.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="251">
+            <state relative-caret-position="1455">
               <caret line="114" column="29" selection-start-line="114" selection-start-column="29" selection-end-line="114" selection-end-column="29" />
               <folding>
-                <element signature="e#21#133#0" expanded="true" />
                 <element signature="n#!!block;n#ShowLogin#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ArticleController.go" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ArticleController.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/controllers/ArticleController.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="43">
-              <caret line="407" column="43" lean-forward="true" selection-start-line="407" selection-start-column="43" selection-end-line="407" selection-end-column="43" />
+            <state relative-caret-position="235">
+              <caret line="352" selection-start-line="352" selection-end-line="352" />
               <folding>
-                <element signature="e#21#317#0" expanded="true" />
-                <element signature="n#!!block;n#ShowArticleList#0" />
+                <element signature="e#21#316#0" expanded="true" />
                 <element signature="n#!!block;n#ShowAddArticle#0" />
                 <element signature="n#!!block;n#HandleAddArticle#0" />
                 <element signature="n#!!block;n#ShowArticleDetail#0" />
@@ -58,8 +43,18 @@
                 <element signature="n#!!block;n#HandleUpdateArticle#0" />
                 <element signature="n#!!block;n#DeleteArticle#0" />
                 <element signature="n#!!block;n#ShowAddType#0" />
+                <element signature="n#!!block;n#HandleAddType#0" />
                 <element signature="n#!!block;n#DeleteType#0" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="dailyfresh.sql" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/models/dailyfresh.sql">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="240">
+              <caret line="8" selection-start-line="8" selection-end-line="8" />
             </state>
           </provider>
         </entry>
@@ -67,11 +62,8 @@
       <file leaf-file-name="router.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routers/router.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="155">
-              <caret line="12" column="68" lean-forward="true" selection-start-line="12" selection-start-column="68" selection-end-line="12" selection-end-column="68" />
-              <folding>
-                <element signature="e#17#122#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="120">
+              <caret line="12" column="68" selection-start-line="12" selection-start-column="68" selection-end-line="12" selection-end-column="68" />
             </state>
           </provider>
         </entry>
@@ -106,7 +98,7 @@
       <file leaf-file-name="layout.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/layout.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
+            <state relative-caret-position="375">
               <caret line="25" column="15" selection-start-line="25" selection-start-column="15" selection-end-line="25" selection-end-column="15" />
             </state>
           </provider>
@@ -115,7 +107,7 @@
       <file leaf-file-name="addType.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/addType.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="409">
+            <state relative-caret-position="705">
               <caret line="47" selection-start-line="47" selection-end-line="47" />
             </state>
           </provider>
@@ -126,18 +118,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="255">
               <caret line="17" column="48" selection-start-line="17" selection-start-column="48" selection-end-line="17" selection-end-column="48" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="main.go" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="16" column="22" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="22" />
-              <folding>
-                <element signature="e#14#103#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -174,9 +154,9 @@
         <option value="$PROJECT_DIR$/controllers/default.go" />
         <option value="$PROJECT_DIR$/main.go" />
         <option value="$PROJECT_DIR$/static/login.html" />
-        <option value="$PROJECT_DIR$/controllers/ArticleController.go" />
         <option value="$PROJECT_DIR$/controllers/UserController.go" />
         <option value="$PROJECT_DIR$/routers/router.go" />
+        <option value="$PROJECT_DIR$/controllers/ArticleController.go" />
       </list>
     </option>
   </component>
@@ -190,8 +170,8 @@
     <packageJsonPaths />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="969" />
-    <option name="y" value="116" />
+    <option name="x" value="628" />
+    <option name="y" value="123" />
     <option name="width" value="1280" />
     <option name="height" value="822" />
   </component>
@@ -223,6 +203,11 @@
             <path>
               <item name="shanghai1qi" type="b2602c69:ProjectViewProjectNode" />
               <item name="shanghai1qi" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="shanghai1qi" type="b2602c69:ProjectViewProjectNode" />
+              <item name="shanghai1qi" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -250,6 +235,9 @@
     <property name="settings.editor.selected.configurable" value="com.goide.configuration.GoLibrariesConfigurableProvider" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/models" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/static/js" />
       <recent name="$PROJECT_DIR$/static/img" />
@@ -279,20 +267,20 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="969" y="116" width="1280" height="822" extended-state="0" />
+    <frame x="628" y="123" width="1280" height="822" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21082391" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21405493" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32979977" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Run" order="2" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" order="7" visible="true" weight="0.39448276" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.39448276" />
       <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -313,17 +301,10 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="3" />
+      <option name="time" value="4" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/controllers/UserController.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="720">
-          <caret line="48" lean-forward="true" selection-start-line="48" selection-end-line="48" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/login.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -527,9 +508,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
           <caret line="2" column="7" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
-          <folding>
-            <element signature="e#21#56#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -537,9 +515,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
           <caret line="2" column="7" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
-          <folding>
-            <element signature="e#16#102#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -547,19 +522,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
           <caret line="14" column="41" selection-start-line="14" selection-start-column="41" selection-end-line="14" selection-end-column="41" />
-          <folding>
-            <element signature="e#21#114#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
+        <state relative-caret-position="180">
           <caret line="16" column="22" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="22" />
-          <folding>
-            <element signature="e#14#103#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -572,7 +541,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/views/layout.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
+        <state relative-caret-position="375">
           <caret line="25" column="15" selection-start-line="25" selection-start-column="15" selection-end-line="25" selection-end-column="15" />
         </state>
       </provider>
@@ -600,10 +569,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/controllers/UserController.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="251">
+        <state relative-caret-position="1455">
           <caret line="114" column="29" selection-start-line="114" selection-start-column="29" selection-end-line="114" selection-end-column="29" />
           <folding>
-            <element signature="e#21#133#0" expanded="true" />
             <element signature="n#!!block;n#ShowLogin#0" />
           </folding>
         </state>
@@ -611,28 +579,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/routers/router.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="155">
-          <caret line="12" column="68" lean-forward="true" selection-start-line="12" selection-start-column="68" selection-end-line="12" selection-end-column="68" />
-          <folding>
-            <element signature="e#17#122#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="120">
+          <caret line="12" column="68" selection-start-line="12" selection-start-column="68" selection-end-line="12" selection-end-column="68" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/views/addType.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="409">
+        <state relative-caret-position="705">
           <caret line="47" selection-start-line="47" selection-end-line="47" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/controllers/ArticleController.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="43">
-          <caret line="407" column="43" lean-forward="true" selection-start-line="407" selection-start-column="43" selection-end-line="407" selection-end-column="43" />
+        <state relative-caret-position="235">
+          <caret line="352" selection-start-line="352" selection-end-line="352" />
           <folding>
-            <element signature="e#21#317#0" expanded="true" />
-            <element signature="n#!!block;n#ShowArticleList#0" />
+            <element signature="e#21#316#0" expanded="true" />
             <element signature="n#!!block;n#ShowAddArticle#0" />
             <element signature="n#!!block;n#HandleAddArticle#0" />
             <element signature="n#!!block;n#ShowArticleDetail#0" />
@@ -641,8 +605,16 @@
             <element signature="n#!!block;n#HandleUpdateArticle#0" />
             <element signature="n#!!block;n#DeleteArticle#0" />
             <element signature="n#!!block;n#ShowAddType#0" />
+            <element signature="n#!!block;n#HandleAddType#0" />
             <element signature="n#!!block;n#DeleteType#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/dailyfresh.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="8" selection-start-line="8" selection-end-line="8" />
         </state>
       </provider>
     </entry>
